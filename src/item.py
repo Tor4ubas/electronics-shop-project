@@ -55,14 +55,20 @@ class Item:
                 item = cls(name, price, quantity)
 
     @staticmethod
-    def string_to_number(value):
+    def string_to_number(number):
         """
         Возвращает число из числа-строки.
         """
-        return int(float(value))
+        return int(float(number))
 
-print(Item.string_to_number('5'))
-print(Item.string_to_number('5.0'))
-print(Item.string_to_number('5.5'))
+#print(Item.string_to_number('5'))
+#print(Item.string_to_number('5.0'))
+#print(Item.string_to_number('5.5'))
 
-#Item.instantiate_from_csv()
+        #Item.instantiate_from_csv()
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self._name}', {self.price}, {self.quantity})"
+
+
+    def __str__(self):
+        return self._name

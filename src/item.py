@@ -46,7 +46,7 @@ class Item:
         Инициализирует экземпляры класса Item данными из файла src/items.csv.
         """
         cls.all = []  # Сбросить список перед загрузкой новых данных
-        with open('C:/Users/User/PycharmProjects/electronics-shop-project/src/items.csv', 'r') as file:
+        with open('../src/items.csv', 'r', encoding='cp1251') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 name = row['name']

@@ -1,5 +1,6 @@
 from src.item import Item
 import pytest
+from src.phone import Phone
 
 @pytest.fixture
 def item1():
@@ -7,6 +8,22 @@ def item1():
     """ Экземпляр класса в фикстуре """
 
     return Item("Смартфон", 10000, 20)
+
+
+@pytest.fixture
+def phone1():
+
+    """ Экземпляр класса в фикстуре """
+
+    return Phone("IPhone", 30000, 10, 2)
+
+def test_1(item1):
+
+    """ Тест метода init """
+
+    assert item1.name == "Смартфон"
+    assert item1.price == 10000
+    assert item1.quantity == 20
 
 def test_calculate_total_price(item1):
     item1 = Item("Смартфон", 10000, 20)
@@ -57,3 +74,9 @@ def test_repr(item1):
 def test_str(item1):
 
     assert str(item1) == "Смартфон"
+
+def test_add(item1, phone1):
+
+    """ Тест метода add """
+
+    assert item1 + phone1 == 30

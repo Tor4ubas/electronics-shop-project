@@ -1,5 +1,11 @@
 import csv
-from src.instantiatecsverror import InstantiateCSVError
+
+class InstantiateCSVError(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return self.msg
 
 
 class Item:
@@ -129,3 +135,5 @@ class Item:
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
         else:
             return self.quantity + other.quantity
+
+

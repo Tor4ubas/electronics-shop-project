@@ -80,3 +80,11 @@ def test_add(item1, phone1):
     """ Тест метода add """
 
     assert item1 + phone1 == 30
+
+def test_instantiate_from_csv():
+
+    """ Тест функции instantiate_from_csv """
+
+    Item.all = []
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 0

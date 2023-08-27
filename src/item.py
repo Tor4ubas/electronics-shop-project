@@ -1,4 +1,5 @@
 import csv
+from src.instantiatecsverror import InstantiateCSVError
 
 
 class Item:
@@ -80,14 +81,22 @@ class Item:
         """ Класс-метод, инициализирующий экземпляры класса Item
         данными из файла src/items.csv """
 
+
         cls.all = []
 
-        with open("../src/items.csv", "rt", newline="", encoding="cp1251") as csv_file:
+        try:
+            with open("../src/items.csv", "rt", newline="", encoding="cp1251") as csv_file:
 
-           reader = csv.DictReader(csv_file)
+                reader = csv.DictReader(csv_file)
 
-           for object in reader:
-               objects = cls(object["name"], object["price"], object["quantity"])
+                for object in reader:
+                    objects = cls(object["name"], object["price"], object["quantity"])
+        except FileNotFoundError:
+            print("FileNotFoundError: Отсутствует файл item.csv")
+        except KeyError:
+            print("InstantiateCSVError: Файл item.csv поврежден")
+
+
 
 
     @staticmethod
